@@ -41,66 +41,59 @@ function isPalindrome(str, i = 0, reversed = []) {
   }
 
   return isPalindrome(str, i + 1, reversed);
-  
 }
 
 /** findIndex: return the index of val in arr (or -1 if val is not present). */
 
-function findIndex(arr,target,i=0) {
-  if(arr[i] === target) return i
-  if(i === arr.length) return -1
+function findIndex(arr, target, i = 0) {
+  if (arr[i] === target) return i;
+  if (i === arr.length) return -1;
 
-  return findIndex(arr, target, i + 1)
+  return findIndex(arr, target, i + 1);
 }
 
 /** revString: return a copy of a string, but in reverse. */
 
-function revString(str, i=0) {
-  if(i === str.length) return ""
+function revString(str, i = 0) {
+  if (i === str.length) return "";
 
-  return revString(str, i + 1) + str[i]
+  return revString(str, i + 1) + str[i];
 }
 
 /** gatherStrings: given an object, return an array of all of the string values. */
 
 function gatherStrings(obj) {
-  let returnVals = []
+  let returnVals = [];
 
-  function _gatherStrings(obj){
-    for(let prop in obj){
-      if(typeof obj[prop] === 'string'){
-        returnVals.push(obj[prop])
-  
+  function _gatherStrings(obj) {
+    for (let prop in obj) {
+      if (typeof obj[prop] === "string") {
+        returnVals.push(obj[prop]);
       }
-      if(typeof obj[prop] === 'object'){
-        _gatherStrings(obj[prop])
-
+      if (typeof obj[prop] === "object") {
+        _gatherStrings(obj[prop]);
       }
     }
-    return
-
+    return;
   }
-  _gatherStrings(obj)
-  return returnVals
-  
+  _gatherStrings(obj);
+  return returnVals;
 }
 
 /** binarySearch: given a sorted array of numbers, and a value,
  * return the index of that value (or -1 if val is not present). */
 
-function binarySearch(arr, val, leftIdx=0, rightIdx=arr.length - 1) {
-  
-  let mid = Math.floor((leftIdx + rightIdx) / 2)
-  
+function binarySearch(arr, val, leftIdx = 0, rightIdx = arr.length - 1) {
+  let mid = Math.floor((leftIdx + rightIdx) / 2);
 
-  if(leftIdx > rightIdx) return -1
-  
-  if(arr[mid] === val){
-    return mid
-  } else if(arr[mid] > val){
-    return binarySearch(arr,val, leftIdx=leftIdx,rightIdx = mid - 1)
-  } else{
-    return binarySearch(arr,val, leftIdx = mid + 1, rightIdx=rightIdx)
+  if (leftIdx > rightIdx) return -1;
+
+  if (arr[mid] === val) {
+    return mid;
+  } else if (arr[mid] > val) {
+    return binarySearch(arr, val, (leftIdx = leftIdx), (rightIdx = mid - 1));
+  } else {
+    return binarySearch(arr, val, (leftIdx = mid + 1), (rightIdx = rightIdx));
   }
 }
 
